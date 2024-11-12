@@ -38,7 +38,7 @@ function App() {
                         <Route path="/utilities/create" element={<Createuser />} />
                         <Route path="/Components" element={<Product />} /> 
                         <Route path="/utilities/view/:userid" element={<ViewUser/>} />
-                        <Route path='/utilities/edit/:userId' element={<Useredit/>} />
+                        <Route path='/utilities/view/edit/:userId' element={<Useredit/>} />
                         <Route path="/Page" element={<Page />} /> 
                         <Route path="/page/view/:bookid" element={<Pageview />} />
                         <Route path="/PageUser" element={<PageUser/>}/>

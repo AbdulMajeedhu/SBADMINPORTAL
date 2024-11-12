@@ -2,7 +2,7 @@ import { useFormik } from "formik";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import { useNavigate, useParams } from "react-router-dom";
-
+// vid 44
 function Useredit(){
     let [isLoading,setLoading] = useState(false);
     let params = useParams();
@@ -37,8 +37,12 @@ function Useredit(){
             return errors
         },
         onSubmit : async(values)=> {
-         await axios.put(`https://66dfea882fb67ac16f278b83.mockapi.io/api/students/${params.userId}`,values)
-         navigate('/utilities')
+        try{
+          await axios.put(`https://66dfea882fb67ac16f278b83.mockapi.io/api/students/${params.userId}`,values)
+          navigate('/utilities')
+        } catch (error) {
+          alert("Something went wrong")
+        }
         },
     })
     useEffect(()=>{

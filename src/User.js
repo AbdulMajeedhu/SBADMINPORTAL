@@ -13,14 +13,22 @@ function User() {
     const [users,setUsers] = useState([]);
     // ON MOUNT
     useEffect(()=>{
-        let fetchData = async () =>
-            {
-            let userData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/students")
-            console.log(userData);
-            setUsers(userData.data)
-            }  
             fetchData()
     }, []);
+    let fetchData = async () =>
+        {
+        let userData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/students")
+        console.log(userData);
+        setUsers(userData.data)
+        }  
+
+   let handleDelete = async (userid) => {
+     let ask = window.confirm("do you ant to delete?")
+     if(ask){
+        await axios.delete(`https://66dfea882fb67ac16f278b83.mockapi.io/api/students/${userid}`)
+     }
+     fetchData()
+   }
     
 //     //  ON DESTROY
 //     useEffect(()=>{
@@ -94,7 +102,7 @@ function User() {
                                         <td>
                                             <Link to={`/utilities/view/${user.id}`} className="btn btn-sm btn-warning mr-2">View</Link>
                                             <Link to={`/utilities/view/edit/${user.id}`} className="btn btn-sm btn-info mr-2">Edit</Link>
-                                            <button to="/utilities/view/1" className="btn btn-sm btn-danger mr-2">Delete</button>
+                                            <button onClick={()=> handleDelete(user.id)} className="btn btn-sm btn-danger mr-2">Delete</button>
                                         </td>
                                     </tr>
                                        )

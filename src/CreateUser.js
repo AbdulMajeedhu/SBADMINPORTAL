@@ -66,6 +66,7 @@ function Createuser() {
     } 
   })
   return (
+    
     <div className="container">
       <form onSubmit={formik.handleSubmit}>
         <div className="row">
@@ -114,6 +115,7 @@ function Createuser() {
             onChange={formik.handleChange} 
             value={formik.values.startDate}  type="date" className="form-control" />
           </div>
+
 
           <div className="col-lg-6">
             <label>Salary</label>

@@ -14,8 +14,10 @@ function book() {
 
             <h1 className="h3 mb-2 text-gray-800">book Tables</h1>
             <p className="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
-                For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>.</p>
-            <Link to="/PageUser" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i className="fas fa-download fa-sm text-white-50"></i> Create User</Link>
+                For more information about DataTables, please visit the <a target="_blank" 
+                href="https://datatables.net">official DataTables documentation</a>.</p>
+            <Link to="/PageUser" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
+            <i className="fas fa-download fa-sm text-white-50"></i> Create User</Link>
 
             <div className="card shadow mb-4">
                 <div className="card-header py-3">
@@ -23,12 +25,40 @@ function book() {
                 </div>
                 <div className="card-body">
                     <div className="table-responsive">
-                        <div id="dataTable_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row"><div className="col-sm-12 col-md-6"><div className="dataTables_length" id="dataTable_length"><label>Show <select name="dataTable_length" aria-controls="dataTable" className="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label></div></div><div className="col-sm-12 col-md-6"><div id="dataTable_filter" className="dataTables_filter"><label>Search:<input type="search" className="form-control form-control-sm" placeholder="" aria-controls="dataTable" /></label></div></div></div><div className="row"><div className="col-sm-12"><table className="table table-bordered dataTable" id="dataTable" width="100%" cellSpacing="0" role="grid" aria-describedby="dataTable_info" style={{ width: "100%" }}>
+                        <div id="dataTable_wrapper" className="dataTables_wrapper dt-bootstrap4"><div className="row">
+                            <div className="col-sm-12 col-md-6"><div className="dataTables_length" id="dataTable_length">
+                                <label>Show <select name="dataTable_length" aria-controls="dataTable" 
+                                className="custom-select custom-select-sm form-control form-control-sm"><option value="10">10</option>
+                                <option value="25">25</option><option value="50">50</option><option value="100">100</option></select> entries</label>
+                                </div></div><div className="col-sm-12 col-md-6"><div id="dataTable_filter" className="dataTables_filter">
+                                    <label>Search:<input type="search" className="form-control form-control-sm" placeholder="" 
+                                    aria-controls="dataTable" /></label></div></div></div><div className="row"><div className="col-sm-12">
+                            <table className="table table-bordered dataTable" id="dataTable" width="100%" cellSpacing="0" role="grid" 
+                            aria-describedby="dataTable_info" style={{ width: "100%" }}>
                             <thead>
-                                <tr role="row"><th className="sorting sorting_asc" tabIndex="0" aria-controls="dataTable" rowSpan="1" colSpan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" style={{ width: "57px" }}>Name</th><th className="sorting" tabIndex="0" aria-controls="dataTable" rowSpan="1" colSpan="1" aria-label="Position: activate to sort column ascending" style={{ width: "61px" }}>Position</th><th className="sorting" tabIndex="0" aria-controls="dataTable" rowSpan="1" colSpan="1" aria-label="Office: activate to sort column ascending" style={{ width: '49px' }}>Office</th><th className="sorting" tabIndex="0" aria-controls="dataTable" rowSpan="1" colSpan="1" aria-label="Age: activate to sort column ascending" style={{ width: "31px" }}>Age</th><th className="sorting" tabIndex="0" aria-controls="dataTable" rowSpan="1" colSpan="1" aria-label="Start date: activate to sort column ascending" style={{ width: "68px" }}>Start date</th><th className="sorting" tabIndex="0" aria-controls="dataTable" rowSpan="1" colSpan="1" aria-label="Salary: activate to sort column ascending" style={{ width: "67px" }}>Salary</th></tr>
+                                <tr role="row"><th className="sorting sorting_asc" tabIndex="0" aria-controls="dataTable" rowSpan="1" 
+                                colSpan="1" aria-sort="ascending" aria-label="Name: activate to sort column descending" 
+                                style={{ width: "57px" }}>Name</th><th className="sorting" tabIndex="0" 
+                                aria-controls="dataTable" rowSpan="1" colSpan="1" 
+                                aria-label="Position: activate to sort column ascending" 
+                                style={{ width: "61px" }}>Position</th><th className="sorting" tabIndex="0" 
+                                aria-controls="dataTable" rowSpan="1" colSpan="1" 
+                                aria-label="Office: activate to sort column ascending" style={{ width: '49px' }}>Office</th>
+                                <th className="sorting" tabIndex="0" aria-controls="dataTable" rowSpan="1" colSpan="1" 
+                                aria-label="Age: activate to sort column ascending" style={{ width: "31px" }}>Age</th>
+                                <th className="sorting" tabIndex="0" aria-controls="dataTable" rowSpan="1" colSpan="1"
+                                 aria-label="Start date: activate to sort column ascending" 
+                                 style={{ width: "68px" }}>Start date</th><th className="sorting" tabIndex="0" 
+                                 aria-controls="dataTable" rowSpan="1" colSpan="1" 
+                                 aria-label="Salary: activate to sort column ascending" style={{ width: "67px" }}>Salary</th>
+                                 </tr>
                             </thead>
                             <tfoot>
-                                <tr><th rowSpan="1" colSpan="1">Name</th><th rowSpan="1" colSpan="1">Position</th><th rowSpan="1" colSpan="1">Office</th><th rowSpan="1" colSpan="1">Age</th><th rowSpan="1" colSpan="1">Start date</th><th rowSpan="1" colSpan="1">Salary</th><th rowSpan="1" colSpan="1">Action</th></tr>
+                                
+                                <tr><th rowSpan="1" colSpan="1">Name</th><th rowSpan="1" colSpan="1">Position</th>
+                                <th rowSpan="1" colSpan="1">Office</th><th rowSpan="1" colSpan="1">Age</th>
+                                <th rowSpan="1" colSpan="1">Start date</th><th rowSpan="1" colSpan="1">Salary</th><th rowSpan="1" colSpan="1">Action</th>
+                                </tr>
                             </tfoot>
                             <tbody>
                                 {
