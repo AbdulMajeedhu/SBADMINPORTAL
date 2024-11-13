@@ -1,6 +1,7 @@
 import { useFormik } from "formik";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import axios from "axios"
 
 
 function PageUser() {
@@ -29,15 +30,19 @@ validate: (values)=>{
     }
     return errors
 },
-onSubmit: (values)=> {
- setLoading(true)
-navigate('/PageUser')
-}
+onSubmit: async (values)=> {
+    try{
+        setLoading(true)
+        console.log(values);
+        await axios.post("https://66dfea882fb67ac16f278b83.mockapi.io/api/users",values)
+       navigate("/Page")
+    } catch (error) {}
+    }
     })
     return (
        
         <div className="container">
-            <form>
+            <form onSubmit={formik.handleSubmit}>
                 <div className="row">
                     <div className="col-lg-6">
                         <label>Name</label>
@@ -55,22 +60,34 @@ navigate('/PageUser')
 
                     <div className="col-lg-6">
                         <label>Position</label>
-                        <input type="text" className="form-control"/>
+                        <input type="text"
+                        name="position"
+                        onChange={formik.handleChange}
+                        value={formik.values.position}
+                         className={`form-control ${formik.errors.position ? 'error-border' : ''}`} />
                     </div>
 
                     <div className="col-lg-6">
                         <label>Office</label>
-                        <input type="text" className="form-control"/>
+                        <input type="text"
+                        name="office"
+                        value={formik.values.office}
+                        onChange={formik.handleChange}
+                         className={`form-control ${formik.errors.office ? 'error-border' : ''} `} />
                     </div>
 
                     <div className="col-lg-6">
                         <label>Age</label>
-                        <input type="text" className="form-control"/>
+                        <input type="text" 
+                        name="age"
+                        onChange={formik.handleChange}
+                        value={formik.errors.age}
+                        className={`form-control ${formik.errors.age ? 'error-border' : ''}`} />
                     </div>
 
                     <div className="col-lg-6">
                         <label>startDate</label>
-                        <input type="text" className="form-control"/>
+                        <input type="date" className="form-control"/>
                     </div>
 
                     <div className="col-lg-6">
@@ -83,8 +100,9 @@ navigate('/PageUser')
                         type={"submit"}
                         value="submit"
                         className=" btn btn-primary mt-2"
-                        disabled={!formik.isValid && isLoading}
+                        disabled={!formik.isValid && setLoading}
                         />
+                        
                     </div>
                 </div>
             </form>

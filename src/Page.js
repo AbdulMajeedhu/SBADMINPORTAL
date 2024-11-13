@@ -1,13 +1,26 @@
+import { useEffect } from "react"
 import { Link } from "react-router-dom"
+import { useState } from "react"
+import axios from "axios"
 
-function book() {
-    let books = [
-        { id: 1,name: "Person 1", position: 20,office: "Chennai", age: 20,  startdate: '12/01/22', salary: 3000 },
+function Book() {
+    // let books = [
+    //     { id: 1,name: "Person 1", position: 20,office: "Chennai", age: 20,  startdate: '12/01/22', salary: 3000 },
            
-        { id: 2,     name: "Person 2",   position: 30,office: "mumbai", age: 34, startdate: '12/05/22', salary: 5000},
+    //     { id: 2,     name: "Person 2",   position: 30,office: "mumbai", age: 34, startdate: '12/05/22', salary: 5000},
            
-        {  id: 3,  name: "Person 3", position: 20, office: "madurai", age: 28,startdate: '19/06/22', salary: 4500 },
-    ]
+    //     {  id: 3,  name: "Person 3", position: 20, office: "madurai", age: 28,startdate: '19/06/22', salary: 4500 },
+    // ]
+      const [books,setBooks] = useState()
+      
+      useEffect(()=>{
+          let fetchData = async()=>{
+            let bookData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/users")
+            console.log(bookData);
+            setBooks(bookData.data)  
+        }
+        fetchData()
+      },[])
     return (
         <><div className="container-fluid">
 
@@ -53,13 +66,7 @@ function book() {
                                  aria-label="Salary: activate to sort column ascending" style={{ width: "67px" }}>Salary</th>
                                  </tr>
                             </thead>
-                            <tfoot>
-                                
-                                <tr><th rowSpan="1" colSpan="1">Name</th><th rowSpan="1" colSpan="1">Position</th>
-                                <th rowSpan="1" colSpan="1">Office</th><th rowSpan="1" colSpan="1">Age</th>
-                                <th rowSpan="1" colSpan="1">Start date</th><th rowSpan="1" colSpan="1">Salary</th><th rowSpan="1" colSpan="1">Action</th>
-                                </tr>
-                            </tfoot>
+                           
                             <tbody>
                                 {
                                     books.map((book) => {
@@ -90,4 +97,4 @@ function book() {
 
     )
 }
-export default book
+export default Book

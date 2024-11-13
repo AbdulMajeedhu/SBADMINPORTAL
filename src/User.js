@@ -1,6 +1,6 @@
 
 import { useEffect } from "react"
-import { Link } from "react-router-dom"
+import { Link, Params,useSearchParams } from "react-router-dom"
 import { useState } from "react";
 import axios from "axios";
 
@@ -15,10 +15,19 @@ function User() {
     useEffect(()=>{
             fetchData()
     }, []);
+    const [seacrchParams, setSearchParams] = useSearchParams()
+    let paramVal = new URLSearchParams(Object.fromEntries([...seacrchParams])).toString()
+
+    // console.log(paramVal)
+    // console.log(...seacrchParams)
     let fetchData = async () =>
         {
-        let userData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/students")
-        console.log(userData);
+        // let userData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/students")
+        let userData = await axios.get(
+            // `https://66dfea882fb67ac16f278b83.mockapi.io/api/students?sortBy=name&order=desc`
+             `https://66dfea882fb67ac16f278b83.mockapi.io/api/students?${paramVal}`
+        )
+        // console.log(userData);
         setUsers(userData.data)
         }  
 

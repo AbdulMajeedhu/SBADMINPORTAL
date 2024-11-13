@@ -40,7 +40,7 @@ function App() {
                         <Route path="/utilities/view/:userid" element={<ViewUser/>} />
                         <Route path='/utilities/view/edit/:userId' element={<Useredit/>} />
                         <Route path="/Page" element={<Page />} /> 
-                        <Route path="/page/view/:bookid" element={<Pageview />} />
+                        <Route path="/Page/view/:bookid" element={<Pageview />} />
                         <Route path="/PageUser" element={<PageUser/>}/>
                        </Routes>
                 </div> 
