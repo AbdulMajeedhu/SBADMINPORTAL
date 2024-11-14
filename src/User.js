@@ -5,6 +5,11 @@ import { useState } from "react";
 // import axios from "axios";
 import axios from "./Axios";
 
+import Lottie from 'react-lottie-player';
+
+
+import animationData from './lottie/Animation - 1731580347524.json';
+
 
 function User() {
     // let  users = [
@@ -13,7 +18,17 @@ function User() {
     //     {  id: 3, name:"Person 3",    position:20,  office:"madurai", age:28,  startdate :'19/06/22',   salary:4500  }, ]
   
     const [users,setUsers] = useState([]);
-    // let timer;
+    const [loading,setLoading] = useState(false) // vid 46 1:03:00
+    const defaultOptions = {
+        loop: true,
+        autoplay: true,
+        animationData: animationData,
+        rendererSettings: {
+          preserveAspectRatio: "xMidYMid slice"
+        }
+      };  // vid 46 1:00:00
+    
+    let timer;
     // ON MOUNT
     useEffect(()=>{
             fetchData();
@@ -41,6 +56,7 @@ function User() {
     // console.log(...seacrchParams)
     let fetchData = async () =>
         {
+            setLoading(true)  // vid 46 1:03:00
         // let userData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/students")
         let userData = await axios.get(
             // `https://66dfea882fb67ac16f278b83.mockapi.io/api/students?sortBy=name&order=desc`
@@ -48,6 +64,7 @@ function User() {
         )
         // console.log(userData);
         setUsers(userData.data)
+        setLoading(false) //vid 46 1:03:00
         }  
 
    let handleDelete = async (id) => {
@@ -94,8 +111,11 @@ function User() {
                     </p>
                         <Link to="/utilities/create" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                         <i className="fas fa-download fa-sm text-white-50"></i> Create User</Link>
-                    
-                    <div className="card shadow mb-4">
+                     {
+                        // loading ? <h1>Loading please wait...</h1>  :   //vid 46 1:03:04 ithu loading mention panna
+                        loading ? <Lottie options={defaultOptions} height={400}
+                        width={400}></Lottie>  :
+                        <div className="card shadow mb-4">
                         <div className="card-header py-3">
                             <h6 className="m-0 font-weight-bold text-primary">DataTables Example</h6>
                         </div>
@@ -152,6 +172,9 @@ function User() {
                             </div>
                         </div>
                     </div>
+                     }
+
+                  
 
                 </div>
                 </>

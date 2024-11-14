@@ -13,14 +13,14 @@ function Book() {
     ]
     //   const [books,setBooks] = useState()
       
-    //   useEffect(()=>{
-    //       let fetchData = async()=>{
-    //         let bookData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/users")
-    //         console.log(bookData);
-    //         setBooks(bookData.data)  
-    //     }
-    //     fetchData()
-    //   },[])
+      useEffect(()=>{
+          let fetchData = async()=>{
+            let bookData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/users")
+            console.log(bookData);
+            // setBooks(bookData.data)  
+        }
+        fetchData()
+      },[])
     return (
         <><div className="container-fluid">
 

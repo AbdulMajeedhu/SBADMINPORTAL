@@ -100,7 +100,7 @@ onSubmit: async (values)=> {
                         type={"submit"}
                         value="submit"
                         className=" btn btn-primary mt-2"
-                        disabled={!formik.isValid && setLoading}
+                        disabled={!formik.isValid && isLoading}
                         />
                         
                     </div>
