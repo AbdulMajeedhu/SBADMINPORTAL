@@ -4,23 +4,23 @@ import { useState } from "react"
 import axios from "axios"
 
 function Book() {
-    // let books = [
-    //     { id: 1,name: "Person 1", position: 20,office: "Chennai", age: 20,  startdate: '12/01/22', salary: 3000 },
+    let books = [
+        { id: 1,name: "Person 1", position: 20,office: "Chennai", age: 20,  startdate: '12/01/22', salary: 3000 },
            
-    //     { id: 2,     name: "Person 2",   position: 30,office: "mumbai", age: 34, startdate: '12/05/22', salary: 5000},
+        { id: 2,     name: "Person 2",   position: 30,office: "mumbai", age: 34, startdate: '12/05/22', salary: 5000},
            
-    //     {  id: 3,  name: "Person 3", position: 20, office: "madurai", age: 28,startdate: '19/06/22', salary: 4500 },
-    // ]
-      const [books,setBooks] = useState()
+        {  id: 3,  name: "Person 3", position: 20, office: "madurai", age: 28,startdate: '19/06/22', salary: 4500 },
+    ]
+    //   const [books,setBooks] = useState()
       
-      useEffect(()=>{
-          let fetchData = async()=>{
-            let bookData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/users")
-            console.log(bookData);
-            setBooks(bookData.data)  
-        }
-        fetchData()
-      },[])
+    //   useEffect(()=>{
+    //       let fetchData = async()=>{
+    //         let bookData = await axios.get("https://66dfea882fb67ac16f278b83.mockapi.io/api/users")
+    //         console.log(bookData);
+    //         setBooks(bookData.data)  
+    //     }
+    //     fetchData()
+    //   },[])
     return (
         <><div className="container-fluid">
 
@@ -71,7 +71,7 @@ function Book() {
                                 {
                                     books.map((book) => {
                                         return (
-                                            <tr className="odd">
+                                            <tr className="odd" key={book.id}>
                                                 <td className="sorting_1">{book.name}</td>
                                                 <td>{book.position}</td>
                                                 <td>{book.office}</td>

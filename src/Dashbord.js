@@ -31,7 +31,7 @@ function Dashboard(){
                         <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">
                             <i className="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
                     </div>
-                    <div className='row'>
+                    <div className='row' >
                        { cards.map((card) => {
                          return <Card data={card} />
                         })

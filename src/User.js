@@ -2,7 +2,9 @@
 import { useEffect } from "react"
 import { Link, Params,useSearchParams } from "react-router-dom"
 import { useState } from "react";
-import axios from "axios";
+// import axios from "axios";
+import axios from "./Axios";
+
 
 function User() {
     // let  users = [
@@ -11,10 +13,27 @@ function User() {
     //     {  id: 3, name:"Person 3",    position:20,  office:"madurai", age:28,  startdate :'19/06/22',   salary:4500  }, ]
   
     const [users,setUsers] = useState([]);
+    // let timer;
     // ON MOUNT
     useEffect(()=>{
-            fetchData()
-    }, []);
+            fetchData();
+            // timer = setInterval(()=>{
+            // console.log("Timer")
+            // },1000)
+            // window.localStorage.setItem("new","Hellooo")
+            window.localStorage.setItem("new",JSON.stringify(users))
+            
+    }, []);  // []- Empty aah iruntha eppolam component load aagutho appolam excute aagumnu 
+            
+//     useEffect(()=>{
+//        return () => {
+//         clearInterval(timer)
+//        }
+//   },[]) 
+    // useEffect(()=>{
+    //       // when the useState is Updated
+    //       // this useEffect will excute
+    // },[users]) 
     const [seacrchParams, setSearchParams] = useSearchParams()
     let paramVal = new URLSearchParams(Object.fromEntries([...seacrchParams])).toString()
 
@@ -31,11 +50,22 @@ function User() {
         setUsers(userData.data)
         }  
 
-   let handleDelete = async (userid) => {
-     let ask = window.confirm("do you ant to delete?")
+   let handleDelete = async (id) => {
+    // eslint-disable-next-line no-restricted-globals
+     let ask = confirm("do you ant to delete?")
      if(ask){
-        await axios.delete(`https://66dfea882fb67ac16f278b83.mockapi.io/api/students/${userid}`)
-     }
+        // await axios.delete(`https://66dfea882fb67ac16f278b83.mockapi.io/api/students/${id}`) // userid
+        await axios.delete(`/api/students/${id}`) // explained that vid 46 41:00
+     };
+     await axios.post(`https://66dfea882fb67ac16f278b83.mockapi.io/api/students`,{
+        name:"aji",
+        age:20
+     },{
+        headers : {
+            "Auth" : "Taken",
+            "from" : ""
+        }    // vid 46 20:00
+     })
      fetchData()
    }
     
