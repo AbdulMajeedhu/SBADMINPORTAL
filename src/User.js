@@ -1,6 +1,6 @@
 
 import { useEffect } from "react"
-import { Link, Params,useSearchParams } from "react-router-dom"
+import { Link, Params,useSearchParams,seacrchParams } from "react-router-dom"
 import { useState } from "react";
 // import axios from "axios";
 import axios from "./Axios";
@@ -26,7 +26,7 @@ function User() {
         rendererSettings: {
           preserveAspectRatio: "xMidYMid slice"
         }
-      };  // vid 46 1:00:00
+      };  // vid 46 1:00:00 lottie
     
     let timer;
     // ON MOUNT
@@ -49,9 +49,17 @@ function User() {
     //       // when the useState is Updated
     //       // this useEffect will excute
     // },[users]) 
-    const [seacrchParams, setSearchParams] = useSearchParams()
-    let paramVal = new URLSearchParams(Object.fromEntries([...seacrchParams])).toString()
+    const [searchParams, setSearchParams] = useSearchParams()
+    // let paramVal = new URLSearchParams(Object.fromEntries([...seacrchParams])).toString();//vid 47 27:00
+    let paramVal = searchParams.toString();//vid 47 34:00
+      console.log(paramVal)        
 
+    //   let newData = {
+    //     name:"product",
+    //     price:100,
+    //     deccription:"this is the product"
+    //   }
+    //   console.log(Object.keys(newData)); // vid 47 31:12 intha data venam
     // console.log(paramVal)
     // console.log(...seacrchParams)
     let fetchData = async () =>
@@ -159,7 +167,8 @@ function User() {
                                         <td>{user.startdate}</td>
                                         <td>${user.salary}</td>
                                         <td>
-                                            <Link to={`/utilities/view/${user.id}`} className="btn btn-sm btn-warning mr-2">View</Link>
+                                            {/* <Link to={`/utilities/view/${user.id}`} className="btn btn-sm btn-warning mr-2">View</Link> */}
+                                            <Link to={`/utilities/view/${user.id}?id=${user.id}&name=${user.id}`} className="btn btn-sm btn-warning mr-2">View</Link>
                                             <Link to={`/utilities/view/edit/${user.id}`} className="btn btn-sm btn-info mr-2">Edit</Link>
                                             <button onClick={()=> handleDelete(user.id)} className="btn btn-sm btn-danger mr-2">Delete</button>
                                         </td>
