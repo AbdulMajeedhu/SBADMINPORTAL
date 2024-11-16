@@ -20,4 +20,4 @@ export default UserContext;
 // context its a wrapper. 
 //used to share data one component to another component
 //context use panni oru component la irunthu innoru component kku data va transfer pannikkalam
-//and ore data va context la write panni ella compont kkum data va anuppalam 
+//and ore data va context la write panni ella compont kkum data va anuppalam `
