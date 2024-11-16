@@ -9,6 +9,9 @@ import Lottie from 'react-lottie-player';
 
 
 import animationData from './lottie/Animation - 1731580347524.json';
+import UserContext from "./UserContext";
+import {  useContext } from "react";
+
 
 
 function User() {
@@ -19,6 +22,7 @@ function User() {
   
     const [users,setUsers] = useState([]);
     const [loading,setLoading] = useState(false) // vid 46 1:03:00
+     let userData = useContext(UserContext); // vid 47 1:01:20
     const defaultOptions = {
         loop: true,
         autoplay: true,
@@ -114,6 +118,7 @@ function User() {
         {/* <button onClick={()=>setVal(val + 1)}>Click</button>    {val} */}
 
                     <h1 className="h3 mb-2 text-gray-800">Tables</h1>
+                    <h3>{userData.user.name}</h3>
                     <p className="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                     For more information about DataTables, please visit the <a target="_blank" href="https://datatables.net">official DataTables documentation</a>
                     </p>

@@ -2,6 +2,9 @@ import { useEffect } from "react"
 import { Link } from "react-router-dom"
 import { useState } from "react"
 import axios from "axios"
+import UserContext from "./UserContext"
+import {  useContext } from "react";
+
 
 function Book() {
     let books = [
@@ -12,6 +15,7 @@ function Book() {
         {  id: 3,  name: "Person 3", position: 20, office: "madurai", age: 28,startdate: '19/06/22', salary: 4500 },
     ]
     //   const [books,setBooks] = useState()
+     let userData = useContext(UserContext);
       
       useEffect(()=>{
           let fetchData = async()=>{
@@ -24,7 +28,7 @@ function Book() {
     return (
         <><div className="container-fluid">
 
-
+             <h3>{userData.user.name} </h3>
             <h1 className="h3 mb-2 text-gray-800">book Tables</h1>
             <p className="mb-4">DataTables is a third party plugin that is used to generate the demo table below.
                 For more information about DataTables, please visit the <a target="_blank" 

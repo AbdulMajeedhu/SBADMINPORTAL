@@ -1,4 +1,6 @@
 import { useParams, useSearchParams } from "react-router-dom";
+import UserContext from "./UserContext";
+import {useContext} from 'react' 
 
 // function ViewUser(){
   
@@ -48,7 +50,8 @@ function ViewUser(){
             startdate :'19/06/22',
             salary:4500
         },
-    ]
+    ];
+    let userData = useContext(UserContext); // vid 47 
     // let params = useParams();
     //console.log(params)
     let{userid} = useParams();
@@ -62,7 +65,12 @@ function ViewUser(){
 
     // console.log(paramVal)
     return(
-   <div>Name : {users[userid-1].name} </div>
+   <div>Name : {users[userid-1].name}
+   {userData.user.name}
+   <button onClick={()=>{
+    userData.setUser({name:"majee",age:23,position:"dev"})
+   }}>Click</button>
+    </div>
     )
 };
 export default ViewUser;

@@ -19,6 +19,7 @@ import Pageview from './Pageview';
 import PageviewUser from './PageUser';
 import PageUser from './PageUser';
 import Useredit from './Useredit';
+import { UserProvider } from './UserContext';
 
 
 
@@ -31,18 +32,20 @@ function App() {
             <div id="content">
                 <Topbar />
                 <div className='container-fluid'>
-                    <Routes>
+                   <UserProvider>
+                   <Routes>
                        
-                        <Route path="/" element={<Dashboard />} />
-                        <Route path="/utilities" element={<User />} />
-                        <Route path="/utilities/create" element={<Createuser />} />
-                        <Route path="/Components" element={<Product />} /> 
-                        <Route path="/utilities/view/:userid" element={<ViewUser/>} />
-                        <Route path='/utilities/view/edit/:userId' element={<Useredit/>} />
-                        <Route path="/Page" element={<Page />} /> 
-                        <Route path="/Page/view/:bookid" element={<Pageview />} />
-                        <Route path="/PageUser" element={<PageUser/>}/>
-                       </Routes>
+                       <Route path="/" element={<Dashboard />} />
+                       <Route path="/utilities" element={<User />} />
+                       <Route path="/utilities/create" element={<Createuser />} />
+                       <Route path="/Components" element={<Product />} /> 
+                       <Route path="/utilities/view/:userid" element={<ViewUser/>} />
+                       <Route path='/utilities/view/edit/:userId' element={<Useredit/>} />
+                       <Route path="/Page" element={<Page />} /> 
+                       <Route path="/Page/view/:bookid" element={<Pageview />} />
+                       <Route path="/PageUser" element={<PageUser/>}/>
+                      </Routes>
+                   </UserProvider>
                 </div> 
             </div>
         </div>
